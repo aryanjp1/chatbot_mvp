@@ -11,7 +11,7 @@ logging.basicConfig(filename="logs/chatbot.log", level=logging.INFO,
 
 class VectorStore:
     def __init__(self):
-        """Initialize the vector store with OpenAI embeddings and ChromaDB."""
+        """Initialize the vector store with OpenAI embeddings and in-memory Chroma."""
         try:
             self.embeddings = OpenAIEmbeddings(
                 openai_api_key=OPENAI_API_KEY,
@@ -19,10 +19,10 @@ class VectorStore:
             )
             self.vector_store = Chroma(
                 collection_name="documents",
-                embedding_function=self.embeddings,
-                persist_directory="./chroma_db"
+                embedding_function=self.embeddings
+                # Removed persist_directory to use in-memory storage
             )
-            logging.info("Initialized vector store with ChromaDB")
+            logging.info("Initialized in-memory vector store with ChromaDB")
         except Exception as e:
             logging.error(f"Error initializing vector store: {e}")
             raise

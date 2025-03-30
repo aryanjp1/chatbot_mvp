@@ -1,7 +1,6 @@
 streamlit==1.32.0
 langchain==0.1.13
 langchain-openai==0.1.1
-langchain-chroma
-langchain-community==0.0.29  # Added for document loaders
-python-dotenv
-pypdf
+langchain-community
+python-dotenv==1.0.1
+faiss-cpu==1.8.0  # Lightweight, no sqlite3 dependency

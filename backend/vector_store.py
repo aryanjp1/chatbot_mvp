@@ -20,7 +20,7 @@ class VectorStore:
             self.vector_store = Chroma(
                 collection_name="documents",
                 embedding_function=self.embeddings
-                # Removed persist_directory to use in-memory storage
+                # No persist_directory; uses in-memory storage
             )
             logging.info("Initialized in-memory vector store with ChromaDB")
         except Exception as e:
